@@ -15,6 +15,8 @@ var client = new Twitter(keys.twitter);
 
 //Object that has parameteres (params) in it
 
+
+//twitter function
 function getTweets(){
 
     var params = {
