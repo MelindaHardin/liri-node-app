@@ -48,7 +48,8 @@ function getTweets(){
     //when the data is returned from the API
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
         if (!error) {
-          console.log(tweets);
+        
+          console.log(tweets[0].text);
         }
     });
 
