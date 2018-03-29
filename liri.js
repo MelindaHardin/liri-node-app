@@ -13,10 +13,12 @@ var client = new Twitter(keys.twitter);
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
 
-var request = require("request"); //<--to grab data from the OMDB API		
-				
+//grab data from the OMDB API		
+var request = require("request"); 
+
+//gets commands for liri
 var command = process.argv[2];
-var search = process.argv[3];
+var searchInput = process.argv[3];
 
 
 switch(command){
@@ -42,7 +44,7 @@ function getTweets(){
 
     var params = {
         screen_name: 'MelindaYWHardin',
-        count:10  //how many tweets I want back
+        count:10  //how many tweets I want back  !!!!!!!!NOT WORKING
     }
     
     //when the data is returned from the API
@@ -55,4 +57,21 @@ function getTweets(){
         }
     });
 
+}
+
+
+function spotify(){
+ console.log("test spotify");
+ 
+    /*spotify.search({ type: 'track', query: searchInput }, function(err, data) {
+        if (err) {
+        return console.log('Error occurred: ' + err);
+        }else {
+            var searchResults= data;
+            console.log(data);
+
+        }
+    
+     
+    });*/
 }
