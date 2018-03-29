@@ -5,13 +5,33 @@ require("dotenv").config();
 
 //Add the code required to import the keys.js file and store it in a variable.  
 var keys = require("./keys.js");	
-
 var twitter = require("twitter");				
 var request = require("request"); //<--to grab data from the OMDB API		
 var spotify = require("node-spotify-api");				
 
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
+
+var command = process.argv[2];
+var search = process.argv[3];
+
+switch(command){
+    case 'my-tweets':
+        tweets();
+    break;
+
+    case 'spotify-this-song':
+        spotify();
+    break;
+
+    case 'movie-this':
+        movies();
+    break;
+
+    case 'do-what-it-says':
+        random();
+    break;
+}
 
 //Object that has parameteres (params) in it
 
