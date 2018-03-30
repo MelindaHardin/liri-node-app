@@ -11,7 +11,7 @@ var client = new Twitter(keys.twitter);
 
     // spotify npm
 var Spotify = require('node-spotify-api');
-var spotify = new Spotify(keys.spotify);
+var spotifyKey = new Spotify(keys.spotify);
 
 //grab data from the OMDB API		
 var request = require("request"); 
@@ -63,15 +63,15 @@ function getTweets(){
 function spotify(){
  console.log("test spotify");
  
-    /*spotify.search({ type: 'track', query: searchInput }, function(err, data) {
+    spotifyKey.search({ type: 'track', query: searchInput, limit: 1 }, function(err, data) {
         if (err) {
         return console.log('Error occurred: ' + err);
         }else {
-            var searchResults= data;
-            console.log(data);
+            var searchResults=JSON.stringify(data, null, 2);
+            console.log(searchResults);
 
         }
     
      
-    });*/
+    });
 }
