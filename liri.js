@@ -61,17 +61,26 @@ function getTweets(){
 
 
 function spotify(){
- console.log("test spotify");
+ //console.log("test spotify");
  
     spotifyKey.search({ type: 'track', query: searchInput, limit: 1 }, function(err, data) {
         if (err) {
         return console.log('Error occurred: ' + err);
         }else {
             var searchResults=JSON.stringify(data, null, 2);
-            console.log(searchResults);
-
+            //console.log(data.tracks.items[0]);
+            console.log("Artist: " + data.tracks.items[0].artists[0].name);
+            console.log("Song Title: " + data.tracks.items[0].name);
+            console.log("Preview link: " + data.tracks.items[0].preview_url);
+            console.log("Album: " + data.tracks.items[0].album.name);
         }
-    
+
+    /*display
+    Artist(s)
+    The song's name
+    A preview link of the song from Spotify
+    The album that the song is from
+     */
      
     });
 }
