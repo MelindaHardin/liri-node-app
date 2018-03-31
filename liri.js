@@ -75,12 +75,30 @@ function spotify(){
             console.log("Album: " + data.tracks.items[0].album.name);
         }
 
-    /*display
-    Artist(s)
-    The song's name
-    A preview link of the song from Spotify
-    The album that the song is from
-     */
      
+    });
+}
+
+
+
+function movies(){
+
+    //request to the queryUrl
+    request("http://www.omdbapi.com/?t=" + searchInput + "&plot=short&apikey=trilogy", function(error, response, body) {
+
+    // If the request is successful
+    if (!error && response.statusCode === 200) {
+
+    // Then log the Release Year for the movie
+    console.log("Title: " + JSON.parse(body).Title);
+    console.log("Year released: " + JSON.parse(body).Year);
+    console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
+    console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+    console.log("Country produced: " + JSON.parse(body).Country);
+    console.log("Language : " + JSON.parse(body).Language);
+    console.log("Plot: " + JSON.parse(body).Plot);
+    console.log("Actors : " + JSON.parse(body).Actors);
+    
+    }
     });
 }
