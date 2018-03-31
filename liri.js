@@ -52,6 +52,13 @@ function getTweets() {
         if (!error) {
             for (var i = 0; i < tweets.length; i++) {
                 console.log(tweets[i].text);
+                
+                //logs the results to log.txt
+                fs.appendFile("log.txt",tweets[i].text+"\n", function (err){
+                    if (err) {
+                        console.log(err);
+                    }
+                })
             }
         }
     });
@@ -67,7 +74,7 @@ function spotify() {
             return console.log('Error occurred: ' + err);
         } else {
             var searchResults = JSON.stringify(data, null, 2);
-            //console.log(data.tracks.items[0]);
+            
             console.log("Artist: " + data.tracks.items[0].artists[0].name);
             console.log("Song Title: " + data.tracks.items[0].name);
             console.log("Preview link: " + data.tracks.items[0].preview_url);
@@ -99,25 +106,25 @@ function movies() {
 }
 //##############################################################################################################
 
-function random(){
+function random() {
 
-    fs.readFile("random.txt", "utf8", function (eror, data){
-        if (eror){
-            return console.log (error);
+    fs.readFile("random.txt", "utf8", function (eror, data) {
+        if (eror) {
+            return console.log(error);
         } else {
             var randomCommand = data.split(",");
-            console.log(randomCommand);
+            //console.log(randomCommand);
 
-            if (randomCommand[0] === "spotify-this-song" ){
-                searchInput=randomCommand[1];
+            if (randomCommand[0] === "spotify-this-song") {
+                searchInput = randomCommand[1];
                 spotify();
 
             } else if (randomCommand[0] === "movie-this") {
+                searchInput = randomCommand[1];
                 movies();
-
-                }
-            };
-
+            }
+        };
     });
-    
 }
+
+//##############################################################################################################
