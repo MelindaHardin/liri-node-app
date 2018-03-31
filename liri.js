@@ -79,6 +79,13 @@ function spotify() {
             console.log("Song Title: " + data.tracks.items[0].name);
             console.log("Preview link: " + data.tracks.items[0].preview_url);
             console.log("Album: " + data.tracks.items[0].album.name);
+
+            //logs the results to log.txt
+            fs.appendFile("log.txt", process.argv +"\n", function (err){  //<----is there a way to log withouth a for loop (to exclude 0 and 1)?
+                if (err) {
+                    console.log(err);
+                }
+            })
         }
     });
 }
@@ -91,7 +98,7 @@ function movies() {
 
         // If the request is successful
         if (!error && response.statusCode === 200) {
-
+            
             // Then log the Release Year for the movie
             console.log("Title: " + JSON.parse(body).Title);
             console.log("Year released: " + JSON.parse(body).Year);
@@ -101,9 +108,11 @@ function movies() {
             console.log("Language : " + JSON.parse(body).Language);
             console.log("Plot: " + JSON.parse(body).Plot);
             console.log("Actors : " + JSON.parse(body).Actors);
+            
         }
     });
 }
+
 //##############################################################################################################
 
 function random() {

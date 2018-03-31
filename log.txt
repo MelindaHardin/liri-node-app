@@ -12,3 +12,7 @@ It had a hard drive.
 what do you call an iPhone that isn't kidding around?
 
 Dead Siri-ous
+C:\Program Files\nodejs\node.exe,C:\Users\owner\kubootcamp\liri-node-app\liri.js,spotify-this-song,first of the month
+undefined
+undefined
+C:\Program Files\nodejs\node.exe,C:\Users\owner\kubootcamp\liri-node-app\liri.js,spotify-this-song,first of the monthC:\Program Files\nodejs\node.exe,C:\Users\owner\kubootcamp\liri-node-app\liri.js,spotify-this-song,first of the month
