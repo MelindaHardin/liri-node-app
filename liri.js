@@ -20,7 +20,6 @@ var request = require("request");
 var command = process.argv[2];
 var searchInput = process.argv[3];
 
-
 switch (command) {
     case 'my-tweets':
         getTweets();
@@ -52,9 +51,9 @@ function getTweets() {
         if (!error) {
             for (var i = 0; i < tweets.length; i++) {
                 console.log(tweets[i].text);
-                
+
                 //logs the results to log.txt
-                fs.appendFile("log.txt",tweets[i].text+"\n", function (err){
+                fs.appendFile("log.txt", tweets[i].text + "\n", function (err) {
                     if (err) {
                         console.log(err);
                     }
@@ -74,18 +73,18 @@ function spotify() {
             return console.log('Error occurred: ' + err);
         } else {
             var searchResults = JSON.stringify(data, null, 2);
-            
+
             console.log("Artist: " + data.tracks.items[0].artists[0].name);
             console.log("Song Title: " + data.tracks.items[0].name);
             console.log("Preview link: " + data.tracks.items[0].preview_url);
             console.log("Album: " + data.tracks.items[0].album.name);
 
-            //logs the results to log.txt
-            fs.appendFile("log.txt", process.argv +"\n", function (err){  //<----is there a way to log withouth a for loop (to exclude 0 and 1)?
+            fs.appendFile("log.txt", process.argv + "\n", function (err) {  //<----there HAS to be a better way to do this without makeing a "for loop" (to exclude 0 and 1)?
                 if (err) {
                     console.log(err);
                 }
             })
+
         }
     });
 }
@@ -98,7 +97,7 @@ function movies() {
 
         // If the request is successful
         if (!error && response.statusCode === 200) {
-            
+
             // Then log the Release Year for the movie
             console.log("Title: " + JSON.parse(body).Title);
             console.log("Year released: " + JSON.parse(body).Year);
@@ -108,7 +107,7 @@ function movies() {
             console.log("Language : " + JSON.parse(body).Language);
             console.log("Plot: " + JSON.parse(body).Plot);
             console.log("Actors : " + JSON.parse(body).Actors);
-            
+
         }
     });
 }
